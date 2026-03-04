@@ -1,6 +1,31 @@
 # ========== LIBRARIES ========== #
 import json
 import time
+import random
+
+# ========== FUNCTIONS ========== #
+def game():
+    time.sleep(1)
+    print("Welcome to Project Bellum")
+    time.sleep(1.5)
+    print("You're a single middle aged man who works a regular 9-5 office job and its been a long day at work.")
+    time.sleep(4.5)
+    print("It's time to go home, you decide to take the bus home and you fall asleep because of how tired you are.")
+
+
+
+
+
+
+
+
+
+def tutorial():
+    print("⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚")
+    print("                                   HOW TO PLAY                                      ")
+    print("⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚")
+    print("                                                                                    ")
+    print("")
 
 # ========== MAIN GAME LOOP ========== #
 while True:
@@ -13,27 +38,39 @@ while True:
         # ========== MAIN MENU ========== #
         while True:
             print("▣▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▣")
-            print("▥                                 PROJECT BELLUM                                     ▥")
+            print("▥                                 PROJECT BELLUM                                    ▥")
             print("▣▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▣")
             print("                                                                                       ")
             print("                          ▣▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▣                              ")
             print("                          ▥            PLAY            ▥                              ")
             print("                          ▣▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▣                              ")
-            print("                                        [Q]                                            ")
+            print("                                        [1]                                            ")
             print("                                                                                       ")
             print("                          ▣▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▣                              ")
-            print("                          ▥          CREDITS           ▥                              ")
+            print("                          ▥         HOW TO PLAY        ▥                              ")
             print("                          ▣▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▣                              ")
-            print("                                        [E]                                            ")
+            print("                                        [2]                                            ")
             print("                                                                                       ")
             print("                          ▣▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▣                              ")
             print("                          ▥            QUIT            ▥                              ")
             print("                          ▣▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▤▣                              ")
-            print("                                        [X]                                            ")
+            print("                                        [3]                                            ")
             print("                                                                                       ")
 
             choice = input("⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚"
                            "\nCOMMAND: ")
+
+            if choice == "1":
+                game()
+            elif choice == "2":
+                tutorial()
+            elif choice == "3":
+                quit()
+            else:
+                print("⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚")
+                print("INVALID INPUT INVALID INPUT INVALID INPUT INVALID INPUT INVALID INPUT INVALID INPUT")
+                print("⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚")
+                print()
 
     except FileNotFoundError:
         print("Error: The file 'data.json' was not found.")
