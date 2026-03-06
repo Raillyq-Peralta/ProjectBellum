@@ -143,7 +143,7 @@ def game():
     # ===== INTRO ===== #
     print("⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚")
     for line in dialogues["intro"]:
-        print(line)
+        type_text(line)
         print()
         press_key()
     print("⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚")
@@ -193,7 +193,7 @@ def game():
             # ===== BATTLE ASSESSMENT ===== #
             if player_data["hp"] <= 0:
                 type_text("You were defeated...")
-            else:
+            elif enemy_data[key]["hp"] > 0:
                 type_text(f"You defeated {key}!")
 
 
