@@ -1,0 +1,8 @@
+{
+    "Lalaque Cave Big Red Ant" : {
+    "hp" : 75,
+    "attack" : 5,
+    "defense" : 5,
+    "agility" : 3
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "Lalaque Forest" : {
+    "Forward" : "Lalaque Bridge",
+    "Left" : "Lalaque Cliff",
+    "Right" : "Lalaque Cave",
+    "Back" : "Deep Lalaque Forest"
+  },
+
+  "Lalaque Bridge" : {
+    "Forward" : "Lalaque Village",
+    "Back" : "Lalaque Forest"
+  },
+
+  "Lalaque Cliff" : {
+    "Lalaque Flower" : "Pick",
+    "Back" : "Lalaque Forest"
+  },
+
+  "Lalaque Cave" : {
+    "Lalaque Cave Big Red Ant" : "Fight",
+    "Back" : "Lalaque Forest"
+  },
+
+  "Deep Lalaque Forest" : {
+    "Back" : "Lalaque Forest"
+  },
+
+  "Lalaque Village" : {
+    "Back" : "Lalaque Bridge"
+  }
+}
