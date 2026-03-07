@@ -32,20 +32,24 @@ with open("inventory.json", "r") as file:
 
 # ===== PLAYER'S TURN ===== #
 def players_turn(player_data, enemy_data, key):
+    # ===== DATA EXTRACTION ===== #
     player_agility = player_data["agility"]
     enemy_agility = enemy_data[key]["agility"]
 
+    # ===== AGILITY COMPARISON ===== #
     if player_agility >= enemy_agility:
-        type_text("It's your turn!\n")
+        type_text("\nIT'S YOUR TURN!\n")
     else:
         type_text(f"It's {key}'s turn!\n")
         return False
 
+    # ===== INPUT DETECTION ===== #
     choice = input("\n⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚"
                    "\n[1] ATTACK"
                    "\n[2] RUN"
                    "\n\nCOMMAND: ")
 
+    # ===== INPUT EVALUATOR ===== #
     if choice.strip() == "1":
         if player_hit_success(player_data, enemy_data, key):
             player_attack(player_data, enemy_data, key)
@@ -73,26 +77,32 @@ def enemys_turn(enemy_data, player_data, key):
 
 # ===== HIT SUCCESS ===== #
 def player_hit_success(player_data, enemy_data, key):
+    # ===== DATA EXTRACTION ===== #
     player_agility = player_data["agility"]
     enemy_agility = enemy_data[key]["agility"]
 
+    # ===== CHANCE CALCULATION ===== #
     chance = 0.5 + (player_agility - enemy_agility) * 0.05
     chance = max(0, min(1, chance))
-
     hit_result = random.random() < chance
+
+    # ===== CHANCE EVALUATOR ===== #
     if hit_result:
         return True
     else:
         return False
 
 def enemy_hit_success(enemy_data, player_data, key):
+    # ===== DATA EXTRACTION ===== #
     enemy_agility = enemy_data[key]["agility"]
     player_agility = player_data["agility"]
 
+    # ===== CHANCE CALCULATION ===== #
     chance = 0.5 + (enemy_agility - player_agility) * 0.05
     chance = max(0, min(1, chance))
-
     hit_result = random.random() < chance
+
+    # ===== CHANCE EVALUATOR ===== #
     if hit_result:
         return True
     else:
@@ -100,25 +110,33 @@ def enemy_hit_success(enemy_data, player_data, key):
 
 # ===== DAMAGE CALCULATION ===== #
 def player_attack(player_data, enemy_data, key):
+    # ===== DATA EXTRACTION ===== #
     player_attack = player_data["attack"]
     enemy_defense = enemy_data[key]["defense"]
 
+    # ===== DAMAGE CALCULATION ===== #
     damage = max(1, player_attack - enemy_defense // 2)
+
+    # ===== DAMAGE EVALUATION ===== #
     enemy_data[key]["hp"] -= damage
-    type_text(f"You hit {key} for {damage} damage!\n")
+    type_text(f"You hit {key} for {damage} damage! {key} has {enemy_data[key]["hp"]}HP left!\n")
     return damage
 
 def enemy_attack(enemy_data, player_data, key):
+    # ===== DATA EXTRACTION ===== #
     enemy_attack = enemy_data[key]["attack"]
     player_defense = player_data["defense"]
 
+    # ===== DAMAGE CALCULATION ===== #
     damage = max(1, enemy_attack - player_defense // 2)
+
+    # ===== DAMAGE EVALUATION ===== #
     player_data["hp"] -= damage
     type_text(f"{key} hit you for {damage} damage! You have {player_data["hp"]}HP left!\n")
     return damage
 
 
-# ===== NEXT DIALOGUE ===== #
+# ===== DIALOGUE ===== #
 def press_key():
     print(" ➤ ", end="")
     keyboard.read_event(suppress=True)
@@ -149,15 +167,19 @@ def game():
     print("⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚")
 
     # ========== ACTUAL GAME ========== #
+    # ===== SPAWN POINT ===== #
     current_location = "Lalaque Forest"
+
+    # ===== LOCATION AND PATHS ===== #
     while True:
-        print(F"========== {current_location.upper()} ==========")
+        print(F"\n========== {current_location.upper()} ==========")
         options = paths[current_location]
         for key in options:
             print(f"{key}: {options[key]}")
         command = input("⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚"
                         "\nCOMMAND: ")
 
+        # ===== INPUT EVALUATION ===== #
         valid = False
         for key in options:
             if command.upper().replace(" ", "") == key.upper().replace(" ", ""):
@@ -165,6 +187,8 @@ def game():
                 result = options[key]
                 valid = True
                 break
+            elif command.upper().strip() == "X":
+                sys.exit()
 
         if not valid:
             print("⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚")
@@ -173,8 +197,12 @@ def game():
             print()
             continue
 
+        # ===== INTERACTION EVALUATION ===== #
+        # ===== TRAVELLING ===== #
         if result in paths:
             current_location = result
+
+        # ===== FIGHTING ===== #
         elif result == "Fight":
             while player_data["hp"] > 0 and enemy_data[key]["hp"] > 0:
                 # ===== PLAYER'S TURN ===== #
@@ -193,21 +221,14 @@ def game():
             # ===== BATTLE ASSESSMENT ===== #
             if player_data["hp"] <= 0:
                 type_text("You were defeated...")
-            elif enemy_data[key]["hp"] > 0:
-                type_text(f"You defeated {key}!")
-
-
-
-
-
-
+            elif enemy_data[key]["hp"] <= 0:
+                type_text(f"You defeated {key}!\n")
 
 # ========== MAIN GAME LOOP ========== #
 while True:
     try:
-        # Opens the JSON in read mode
+        # ===== JSON INTERPRETATION ===== #
         with open("player_data.json", 'r') as file:
-            # Loads the JSON data from the file
             data = json.load(file)
 
         # ========== MAIN MENU ========== #
@@ -249,9 +270,12 @@ while True:
             print("                   ▀▀            ▀▀                     ▀       ▀             ▀▀")
             print("                   ▄▄▄▄▄ ▄▄▄▄▄ ▄▄▄▄▄ ▄▄▄▄▄ ▄▄▄▄▄ ▄▄▄▄▄ ▄▄▄▄▄ ▄▄▄▄▄ ▄▄▄▄▄ ▄▄▄▄▄   ")
 
+
+            # ===== INPUT ===== #
             choice = input("⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚⬚"
                            "\nCOMMAND: ")
 
+            # ===== INPUT EVALUATION ===== #
             if choice.strip() == "1":
                 game()
             elif choice.strip() == "2":
@@ -266,6 +290,7 @@ while True:
 
 
 
+    # ===== JSON ERROR HANDLING ===== #
     except FileNotFoundError:
         print("Error: Some JSON files are missing, please reinstall and try again.")
         sys.exit()

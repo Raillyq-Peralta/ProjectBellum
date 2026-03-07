@@ -12,12 +12,11 @@
   },
 
   "Lalaque Cliff" : {
-    "Lalaque Flower" : "Pick",
     "Back" : "Lalaque Forest"
   },
 
   "Lalaque Cave" : {
-    "Lalaque Cave Big Red Ant" : "Fight",
+    "Big Red Ant" : "Fight",
     "Back" : "Lalaque Forest"
   },
 
