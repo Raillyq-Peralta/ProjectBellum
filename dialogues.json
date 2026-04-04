@@ -6,5 +6,34 @@
     "When you awaken, you look out the window to suddenly find yourself in a different world full of other worldly creatures and unique plants and trees never seen on Earth.",
     "This shocks you yet you get off the bus because you have a gut-feeling that something in this land is calling upon you.",
     "Once you get down, your journey in this new world begins!"
+  ],
+
+  "Lalaque Villager" : [
+    "What do you want?",
+    "I need a jacket.",
+    "For what?",
+    "I want to go to the icy plains over there.",
+    "...",
+    "So??",
+    "I want something in exchange.",
+    "What?",
+    "Give me a Lalaque flower and a pincer.",
+    "Where will I get that?",
+    "Find it yourself.",
+    "...",
+    "..."
+  ],
+
+  "Lalaque Villager False" : [
+    "Have you found the materials I need?",
+    "Not yet.",
+    "..."
+  ],
+
+  "Lalaque Villager True" : [
+    "Have you found the materials I need?",
+    "Yeah, here it is.",
+    "Thanks, here you go. You can keep the jacket.",
+    "Thanks."
   ]
 }

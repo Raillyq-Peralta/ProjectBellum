@@ -12,19 +12,47 @@
   },
 
   "Lalaque Cliff" : {
+    "Take" : "Lalaque Flower",
     "Back" : "Lalaque Forest"
   },
 
   "Lalaque Cave" : {
-    "Big Red Ant" : "Fight",
+    "Fight" : "Big Red Ant",
     "Back" : "Lalaque Forest"
   },
 
   "Deep Lalaque Forest" : {
+    "Interact" : "Shrine",
     "Back" : "Lalaque Forest"
   },
 
   "Lalaque Village" : {
+    "Interact" : "Lalaque Villager",
+    "Left" : "Icy Plains",
     "Back" : "Lalaque Bridge"
+  },
+
+  "Icy Plains" : {
+    "Forward" : "Snow Field",
+    "Back" : "Boar Plains"
+  },
+
+  "Snow Field" : {
+    "Forward" : "Ice Cave",
+    "Back" : "Icy Plains"
+  },
+
+  "Ice Cave" : {
+    "Back" : "Snow Field"
+  },
+
+  "Boar Plains" : {
+    "Fight" : "Wild Boar",
+    "Left" : "Vavelia Forest",
+    "Back" : "Icy Plains"
+  },
+
+  "Vavelia Forest" : {
+    "Back" : "Boar Plains"
   }
 }
