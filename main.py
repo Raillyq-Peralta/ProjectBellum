@@ -10,6 +10,7 @@ import random
 import sys
 import os
 import shutil
+import msvcrt
 
 #                  ⊰════════════════════════✦ 𝑬𝑹𝑹𝑶𝑹 𝑯𝑨𝑵𝑫𝑳𝑰𝑵𝑮 ✦════════════════════════⊱
 try:
@@ -61,7 +62,12 @@ except json.JSONDecodeError as e:
 # ⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱
 #                    ⊰════════════════════════✦ 𝑻𝑬𝑿𝑻 𝑬𝑭𝑭𝑬𝑪𝑻𝑺 ✦════════════════════════⊱
 #                                        ⊰═════ 𝑻𝒀𝑷𝑰𝑵𝑮 𝑬𝑭𝑭𝑬𝑪𝑻 ═════⊱
-def type_text(text, speed):
+def type_text(text, speed, centered = False):
+    if centered:
+        width = shutil.get_terminal_size().columns
+        padding = (width - len(text)) // 2
+        print(" " * max(padding, 0), end="")
+
     for char in text:
         print(char, end="", flush=True)
         time.sleep(speed)
@@ -81,12 +87,104 @@ def clear():
         os.system("clear")
 
 
-#                                      ⊰═════ 𝑹𝑬𝑺𝑷𝑶𝑵𝑺𝑬 𝑬𝑭𝑭𝑬𝑪𝑻 ═════⊱
-def press_key():
-    print(" ➤ ", end="", flush=True)
+#                                      ⊰═════ 𝑫𝑰𝑨𝑳𝑶𝑮𝑼𝑬 𝑬𝑭𝑭𝑬𝑪𝑻 ═════⊱
+def dialogue():
+    print("\033[33m➤ \033[0m", end="", flush=True)
     keyboard.wait("space")
 
+    while msvcrt.kbhit():
+        msvcrt.getch()
 
+#                                      ⊰═════ 𝑪𝑶𝑵𝑻𝑰𝑵𝑼𝑬 𝑬𝑭𝑭𝑬𝑪𝑻 ═════⊱
+def press_space():
+    print("\033[33m𝑷𝒓𝒆𝒔𝒔 𝒔𝒑𝒂𝒄𝒆 𝒕𝒐 𝒄𝒐𝒏𝒕𝒊𝒏𝒖𝒆 ➤ \033[0m")
+    keyboard.wait("space")
+
+    while msvcrt.kbhit():
+        msvcrt.getch()
+#                 ⊰════════════════════════✦ 𝑫𝑰𝑨𝑳𝑶𝑮𝑼𝑬 𝑴𝑬𝑪𝑯𝑨𝑵𝑰𝑪𝑺 ✦════════════════════════⊱
+#                                      ⊰═════ 𝑪𝑶𝑵𝑫𝑰𝑻𝑰𝑶𝑵 𝑪𝑯𝑬𝑪𝑲𝑬𝑹 ═════⊱
+def check_conditions(conditions, dialogue_block):
+# 𝑰𝑵𝑽𝑬𝑵𝑻𝑶𝑹𝒀 𝑪𝑯𝑬𝑪𝑲𝑬𝑹
+    for item in conditions:
+        if item not in inventory.values():
+            return False
+
+# 𝑻𝑨𝑲𝑬𝑺 𝑹𝑬𝑸𝑼𝑰𝑹𝑬𝑫 𝑰𝑻𝑬𝑴𝑺
+    for item in conditions:
+        for slot in inventory:
+            if inventory[slot] == item:
+                inventory[slot] = "Empty"
+                break
+
+# 𝑮𝑰𝑽𝑬𝑺 𝑻𝑯𝑬 𝑹𝑬𝑾𝑨𝑹𝑫
+    for slot in inventory:
+        if inventory[slot] == "Empty":
+            inventory[slot] = dialogue_block["reward"]
+            break
+
+    return True
+
+#                                      ⊰═════ 𝑫𝑰𝑨𝑳𝑶𝑮𝑼𝑬 𝑬𝑿𝑬𝑪𝑼𝑻𝑶𝑹 ═════⊱
+def execute_dialogue(dialogue_block):
+# 𝑷𝑹𝑰𝑵𝑻𝑺 𝑫𝑰𝑨𝑳𝑶𝑮𝑼𝑬 𝑰𝑵 𝑨 𝑻𝑬𝑿𝑻 𝑩𝑶𝑿
+    clear()
+    for line in dialogue_block["lines"]:
+        center_text("\033[33m⊰══════════════════════════════════════════════════════════════════════════════════════════✦❘ ༻༺ ❘✦══════════════════════════════════════════════════════════════════════════════════════════⊱\033[0m")
+        print()
+        center_text("\033[33m⊰══════════════════════════════════════════════════════════════════════════════════════════✦❘ ༻༺ ❘✦══════════════════════════════════════════════════════════════════════════════════════════⊱\033[0m")
+        print("\033[F\033[F", end="")
+        type_text(line, 0.05, True)
+        print("\n")
+        dialogue()
+        clear()
+
+#                                      ⊰═════ 𝑵𝑷𝑪 𝑬𝑿𝑬𝑪𝑼𝑻𝑶𝑹 ═════⊱
+def execute_npc(npc):
+# 𝑰𝑵𝑰𝑻𝑰𝑨𝑳𝑰𝒁𝑬𝑺 𝑻𝑯𝑬 𝑭𝑨𝑳𝑳𝑩𝑨𝑪𝑲
+    incomplete_dialogue = None
+
+# 𝑫𝑰𝑨𝑳𝑶𝑮𝑼𝑬 𝑺𝑻𝑨𝑮𝑬 𝑬𝑽𝑨𝑳𝑼𝑨𝑻𝑶𝑹
+    for dialogue_block in dialogues[npc]:
+        condition = dialogue_block.get("conditions")
+
+# 𝑰𝑵𝑰𝑻𝑰𝑨𝑳𝑰𝒁𝑬𝑺 𝑻𝑯𝑬 𝑭𝑨𝑳𝑳𝑩𝑨𝑪𝑲
+        if condition == "Incomplete":
+            incomplete_dialogue = dialogue_block
+            continue
+
+# 𝑸𝑼𝑬𝑺𝑻 𝑫𝑬𝑻𝑨𝑰𝑳𝑺
+        if condition is None and dialogue_block.get("access"):
+            execute_dialogue(dialogue_block)
+            dialogue_block["access"] = False
+
+            for d_block in dialogues[npc]:
+                if isinstance(d_block["conditions"], list):
+                    d_block["access"] = True
+                if d_block["conditions"] == "Incomplete":
+                    d_block["access"] = True
+            return
+
+# 𝑸𝑼𝑬𝑺𝑻 𝑪𝑯𝑬𝑪𝑲𝑬𝑹
+        elif isinstance(condition, list) and dialogue_block.get("access"):
+            if check_conditions(condition, dialogue_block):
+                execute_dialogue(dialogue_block)
+                dialogue_block["access"] = False
+
+                for d_block in dialogues[npc]:
+                    if d_block["conditions"] == "Finished":
+                        d_block["access"] = True
+                    if d_block["conditions"] == "Incomplete":
+                        d_block["access"] = False
+                return
+# 𝑷𝑶𝑺𝑻-𝑸𝑼𝑬𝑺𝑻 𝑫𝑰𝑨𝑳𝑶𝑮𝑼𝑬
+        elif condition == "Finished" and dialogue_block.get("access"):
+            execute_dialogue(dialogue_block)
+            return
+
+# 𝑸𝑼𝑬𝑺𝑻 𝑪𝑶𝑵𝑫𝑰𝑻𝑰𝑶𝑵𝑺 𝑵𝑶𝑻 𝑴𝑬𝑻
+    if incomplete_dialogue:
+        execute_dialogue(incomplete_dialogue)
 #                 ⊰════════════════════════✦ 𝑭𝑰𝑮𝑯𝑻𝑰𝑵𝑮 𝑴𝑬𝑪𝑯𝑨𝑵𝑰𝑪𝑺 ✦════════════════════════⊱
 #                                     ⊰═════ 𝑯𝑰𝑻𝑹𝑨𝑻𝑬 𝑪𝑨𝑳𝑪𝑼𝑳𝑨𝑻𝑰𝑶𝑵 ═════⊱
 def player_hit_success(p_data, e_data, enemy_key):
@@ -167,7 +265,7 @@ def players_turn(p_data, e_data, enemy_key):
         center_text("\033[31m                                          ┃┏┓┓┏┏┓┃┓┏┫  ┃┏┓┏┓┓┏╋                                          \033[0m")
         center_text("\033[31m                                          ┻┛┗┗┛┗┻┗┗┗┻  ┻┛┗┣┛┗┻┗                                          \033[0m")
         center_text("\033[31m⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱\033[0m")
-        keyboard.wait("space")
+        press_space()
         return players_turn(p_data, e_data, enemy_key)
 
 
@@ -215,7 +313,7 @@ def quit_detector():
             center_text("\033[31m                                          ┃┏┓┓┏┏┓┃┓┏┫  ┃┏┓┏┓┓┏╋                                          \033[0m")
             center_text("\033[31m                                          ┻┛┗┗┛┗┻┗┗┗┻  ┻┛┗┣┛┗┻┗                                          \033[0m")
             center_text("\033[31m⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱\033[0m")
-            keyboard.wait("space")
+            press_space()
             continue
 
 
@@ -246,7 +344,7 @@ def information():
     center_text("                 𝑃𝑟𝑒𝑠𝑠 '𝑆𝑃𝐴𝐶𝐸' 𝑡𝑜 𝑐𝑜𝑛𝑡𝑖𝑛𝑢𝑒                                                                ")
     center_text("                𝑃𝑟𝑒𝑠𝑠 '𝑋' 𝑡𝑜 𝑞𝑢𝑖𝑡 𝑡𝘩𝑒 𝑔𝑎𝑚𝑒                                                                ")
     center_text("༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺\n                                                  ")
-    keyboard.wait("space")
+    press_space()
     clear()
 
 
@@ -259,9 +357,14 @@ def game():
 #                       ⊰════════════════════════✦ 𝑰𝑵𝑻𝑹𝑶 ✦════════════════════════⊱
     clear()
     for line in dialogues["intro"]:
-        type_text(line, 0.05)
+        center_text("\033[33m⊰══════════════════════════════════════════════════════════════════════════════════════════✦❘ ༻༺ ❘✦══════════════════════════════════════════════════════════════════════════════════════════⊱\033[0m")
         print()
-        press_key()
+        center_text("\033[33m⊰══════════════════════════════════════════════════════════════════════════════════════════✦❘ ༻༺ ❘✦══════════════════════════════════════════════════════════════════════════════════════════⊱\033[0m")
+        print("\033[F\033[F", end="")
+        type_text(line, 0.05, True)
+        print("\n")
+        dialogue()
+        clear()
 
     current_location = "Lalaque Forest"
 
@@ -271,7 +374,7 @@ def game():
         print(f"\n⊰════════════════════════✦ {current_location.upper()} ✦════════════════════════⊱")
         options = paths[current_location]
         for k in options:
-            print(f"{k}⊱ {options[k]}")
+            print(f"{k} ⊱ {options[k]}")
 
 #                       ⊰════════════════════════✦ 𝑰𝑵𝑷𝑼𝑻 ✦════════════════════════⊱
         command = input(
@@ -304,12 +407,15 @@ def game():
             center_text("\033[31m                                          ┃┏┓┓┏┏┓┃┓┏┫  ┃┏┓┏┓┓┏╋                                          \033[0m")
             center_text("\033[31m                                          ┻┛┗┗┛┗┻┗┗┗┻  ┻┛┗┣┛┗┻┗                                          \033[0m")
             center_text("\033[31m⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱\033[0m")
-            keyboard.wait("space")
+            press_space()
             continue
 
 #                       ⊰════════════════════════✦ 𝑬𝑿𝑷𝑳𝑶𝑹𝑰𝑵𝑮 ✦════════════════════════⊱
         if result in paths:
             current_location = result
+
+        elif result in dialogues:
+            execute_npc(result)
 
 #                     ⊰════════════════════════✦ 𝑪𝑶𝑴𝑩𝑨𝑻 𝑺𝒀𝑺𝑻𝑬𝑴 ✦════════════════════════⊱
         elif result in enemy_data:
@@ -386,4 +492,4 @@ while True:
         center_text("\033[31m                                          ┃┏┓┓┏┏┓┃┓┏┫  ┃┏┓┏┓┓┏╋                                          \033[0m")
         center_text("\033[31m                                          ┻┛┗┗┛┗┻┗┗┗┻  ┻┛┗┣┛┗┻┗                                          \033[0m")
         center_text("\033[31m⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱\033[0m")
-        keyboard.wait("space")
+        press_space()
