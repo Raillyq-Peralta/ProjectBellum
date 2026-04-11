@@ -9,31 +9,58 @@
   ],
 
   "Lalaque Villager" : [
-    "What do you want?",
-    "I need a jacket.",
-    "For what?",
-    "I want to go to the icy plains over there.",
-    "...",
-    "So??",
-    "I want something in exchange.",
-    "What?",
-    "Give me a Lalaque flower and a pincer.",
-    "Where will I get that?",
-    "Find it yourself.",
-    "...",
-    "..."
-  ],
-
-  "Lalaque Villager False" : [
-    "Have you found the materials I need?",
-    "Not yet.",
-    "..."
-  ],
-
-  "Lalaque Villager True" : [
-    "Have you found the materials I need?",
-    "Yeah, here it is.",
-    "Thanks, here you go. You can keep the jacket.",
-    "Thanks."
-  ]
+    {
+      "conditions": null,
+      "lines": [
+        "Lalaque Villager: What do you want?",
+        "You: I need a jacket.",
+        "Lalaque Villager: For what?",
+        "You: I want to go to the snow field over there.",
+        "Lalaque Villager: ...",
+        "You: Sooooo?",
+        "Lalaque Villager: I want something in exchange.",
+        "You: What?",
+        "Lalaque Villager: Give me a Lalaque flower and a pincer.",
+        "You: Why do you need those?",
+        "Lalaque Villager: None of your business.",
+        "You: Where will I get that?",
+        "Lalaque Villager: Find it yourself.",
+        "You: ...",
+        "Lalaque Villager: ..."
+      ],
+      "access" : true
+    },
+    {
+      "conditions" : ["Lalaque Flower", "Pincer"],
+      "lines" : [
+        "Lalaque Villager: Have you found the materials I need? ( Lalaque Flower and Pincer )",
+        "You: Yeah, here it is.",
+        "Lalaque Villager: Thanks, here you go. You can keep the jacket.",
+        "You: Thanks..."
+      ],
+      "reward" : "Jacket",
+      "access" : false
+    },
+    {
+      "conditions" : "Incomplete",
+      "lines" : [
+        "Lalaque Villager: Have you found the materials I need? ( Lalaque Flower and Pincer )",
+        "You: Not yet.",
+        "Lalaque Villager: ..."
+      ],
+      "access" : false
+    },
+    {
+      "conditions" : "Finished",
+      "lines" : [
+        "Lalaque Villager: What now?",
+        "You: This jacket feels weird.",
+        "Lalaque Villager: I just found that in my attic, molding.",
+        "You: !!!",
+        "Lalaque Villager: Whatever, last touch.",
+        "You: You're disgusting!"
+      ],
+      "access" : false
+    }
+    ]
 }
