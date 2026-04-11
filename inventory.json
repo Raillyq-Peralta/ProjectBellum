@@ -1,7 +1,12 @@
 {
-  "slot_one" : "Empty",
-  "slot_two" : "Empty",
-  "slot_three" : "Locked",
-  "slot_four" : "Locked",
-  "slot_five" : "Locked"
+  "Slot 1" : "Empty",
+  "Slot 2" : "Empty",
+  "Slot 3" : "Empty",
+  "Slot 4" : "Empty",
+  "Slot 5" : "Empty",
+  "Slot 6" : "Empty",
+  "Slot 7" : "Empty",
+  "Slot 8" : "Empty",
+  "Slot 9" : "Empty",
+  "Slot 10" : "Empty"
 }
