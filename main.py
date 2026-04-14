@@ -11,6 +11,7 @@ import sys
 import os
 import shutil
 import msvcrt
+import pygame
 
 #                  ⊰════════════════════════✦ 𝑬𝑹𝑹𝑶𝑹 𝑯𝑨𝑵𝑫𝑳𝑰𝑵𝑮 ✦════════════════════════⊱
 try:
@@ -62,15 +63,23 @@ except json.JSONDecodeError as e:
 # ⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱
 #                    ⊰════════════════════════✦ 𝑻𝑬𝑿𝑻 𝑬𝑭𝑭𝑬𝑪𝑻𝑺 ✦════════════════════════⊱
 #                                        ⊰═════ 𝑻𝒀𝑷𝑰𝑵𝑮 𝑬𝑭𝑭𝑬𝑪𝑻 ═════⊱
-def type_text(text, speed, centered = False):
+def type_text(text, speed, centered = False, skip = False):
     if centered:
         width = shutil.get_terminal_size().columns
         padding = (width - len(text)) // 2
         print(" " * max(padding, 0), end="")
 
-    for char in text:
-        print(char, end="", flush=True)
+    i = 0
+    length = len(text)
+
+    while i < length:
+        if skip and keyboard.is_pressed("q"):
+            print(text[i:], end="", flush=True)
+            break
+
+        print(text[i], end="", flush=True)
         time.sleep(speed)
+        i += 1
 
 
 #                                        ⊰═════ 𝑪𝑬𝑵𝑻𝑬𝑹 𝑬𝑭𝑭𝑬𝑪𝑻 ═════⊱
@@ -88,20 +97,17 @@ def clear():
 
 
 #                                      ⊰═════ 𝑫𝑰𝑨𝑳𝑶𝑮𝑼𝑬 𝑬𝑭𝑭𝑬𝑪𝑻 ═════⊱
-def dialogue():
-    print("\033[33m➤ \033[0m", end="", flush=True)
-    keyboard.wait("space")
+def press_space(space_prompt = False):
+    if space_prompt:
+        print("\033[33m𝑷𝒓𝒆𝒔𝒔 𝒔𝒑𝒂𝒄𝒆 𝒕𝒐 𝒄𝒐𝒏𝒕𝒊𝒏𝒖𝒆 ➤ \033[0m")
+        keyboard.wait("space")
+    else:
+        print("\033[33m➤ \033[0m", end="", flush=True)
+        keyboard.wait("space")
 
     while msvcrt.kbhit():
         msvcrt.getch()
 
-#                                      ⊰═════ 𝑪𝑶𝑵𝑻𝑰𝑵𝑼𝑬 𝑬𝑭𝑭𝑬𝑪𝑻 ═════⊱
-def press_space():
-    print("\033[33m𝑷𝒓𝒆𝒔𝒔 𝒔𝒑𝒂𝒄𝒆 𝒕𝒐 𝒄𝒐𝒏𝒕𝒊𝒏𝒖𝒆 ➤ \033[0m")
-    keyboard.wait("space")
-
-    while msvcrt.kbhit():
-        msvcrt.getch()
 #                 ⊰════════════════════════✦ 𝑫𝑰𝑨𝑳𝑶𝑮𝑼𝑬 𝑴𝑬𝑪𝑯𝑨𝑵𝑰𝑪𝑺 ✦════════════════════════⊱
 #                                      ⊰═════ 𝑪𝑶𝑵𝑫𝑰𝑻𝑰𝑶𝑵 𝑪𝑯𝑬𝑪𝑲𝑬𝑹 ═════⊱
 def check_conditions(conditions, dialogue_block):
@@ -134,9 +140,9 @@ def execute_dialogue(dialogue_block):
         print()
         center_text("\033[33m⊰══════════════════════════════════════════════════════════════════════════════════════════✦❘ ༻༺ ❘✦══════════════════════════════════════════════════════════════════════════════════════════⊱\033[0m")
         print("\033[F\033[F", end="")
-        type_text(line, 0.05, True)
+        type_text(line, 0.05, True, True)
         print("\n")
-        dialogue()
+        press_space(True)
         clear()
 
 #                                      ⊰═════ 𝑵𝑷𝑪 𝑬𝑿𝑬𝑪𝑼𝑻𝑶𝑹 ═════⊱
@@ -185,6 +191,20 @@ def execute_npc(npc):
 # 𝑸𝑼𝑬𝑺𝑻 𝑪𝑶𝑵𝑫𝑰𝑻𝑰𝑶𝑵𝑺 𝑵𝑶𝑻 𝑴𝑬𝑻
     if incomplete_dialogue:
         execute_dialogue(incomplete_dialogue)
+
+def show_inventory(inv):
+    clear()
+    center_text("\033[92m⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱\033[0m")
+    center_text("\033[92m                                           ┳┳┓┓┏┏┓┳┓┏┳┓┏┓┳┓┓┏                                            \033[0m")
+    center_text("\033[92m                                           ┃┃┃┃┃┣ ┃┃ ┃ ┃┃┣┫┗┫                                            \033[0m")
+    center_text("\033[92m                                           ┻┛┗┗┛┗┛┛┗ ┻ ┗┛┛┗┗┛                                            \033[0m")
+    center_text("\033[92m⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱\033[0m")
+    center_text("\033[92m                                     『 𝑺𝑳𝑶𝑻 』   ✦   『 𝑰𝑻𝑬𝑴 』                                        \033[0m")
+    center_text("\033[93m══════════════════════════════════════════════════\033[0m")
+    for slot in inventory:
+        center_text(f"\033[92m{slot} ➣ {inventory[slot]}\033[0m")
+        center_text("\033[93m══════════════════════════════════════════════════\033[0m")
+    press_space(True)
 #                 ⊰════════════════════════✦ 𝑭𝑰𝑮𝑯𝑻𝑰𝑵𝑮 𝑴𝑬𝑪𝑯𝑨𝑵𝑰𝑪𝑺 ✦════════════════════════⊱
 #                                     ⊰═════ 𝑯𝑰𝑻𝑹𝑨𝑻𝑬 𝑪𝑨𝑳𝑪𝑼𝑳𝑨𝑻𝑰𝑶𝑵 ═════⊱
 def player_hit_success(p_data, e_data, enemy_key):
@@ -265,7 +285,7 @@ def players_turn(p_data, e_data, enemy_key):
         center_text("\033[31m                                          ┃┏┓┓┏┏┓┃┓┏┫  ┃┏┓┏┓┓┏╋                                          \033[0m")
         center_text("\033[31m                                          ┻┛┗┗┛┗┻┗┗┗┻  ┻┛┗┣┛┗┻┗                                          \033[0m")
         center_text("\033[31m⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱\033[0m")
-        press_space()
+        press_space(True)
         return players_turn(p_data, e_data, enemy_key)
 
 
@@ -313,7 +333,7 @@ def quit_detector():
             center_text("\033[31m                                          ┃┏┓┓┏┏┓┃┓┏┫  ┃┏┓┏┓┓┏╋                                          \033[0m")
             center_text("\033[31m                                          ┻┛┗┗┛┗┻┗┗┗┻  ┻┛┗┣┛┗┻┗                                          \033[0m")
             center_text("\033[31m⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱\033[0m")
-            press_space()
+            press_space(True)
             continue
 
 
@@ -324,27 +344,34 @@ def information():
     center_text("                                           ┳  ┏          •                                              ")
     center_text("                                           ┃┏┓╋┏┓┏┓┏┳┓┏┓╋┓┏┓┏┓                                          ")
     center_text("                                           ┻┛┗┛┗┛┛ ┛┗┗┗┻┗┗┗┛┛┗                                          ")
-    center_text("⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱\n")
+    center_text("⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱")
+    print()
     center_text("༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺                                                 ")
     center_text("                    𝑴𝑨𝑰𝑵 𝑶𝑩𝑱𝑬𝑪𝑻𝑰𝑽𝑬                                                                     ")
     center_text("──────────────────────────────────────────────────────                                                  ")
     center_text("             𝐹𝑖𝑛𝑑 𝑎 𝑤𝑎𝑦 𝑡𝑜 𝑔𝑜 𝑏𝑎𝑐𝑘 𝑡𝑜 𝑟𝑒𝑎𝑙𝑖𝑡𝑦…                                                              ")
-    center_text("༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺\n                                                  ")
+    center_text("༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺                                                  ")
+    print()
     center_text("                                                 ༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺")
     center_text("                                                                     𝑺𝑼𝑩-𝑶𝑩𝑱𝑬𝑪𝑻𝑰𝑽𝑬𝑺                     ")
     center_text("                                                  ──────────────────────────────────────────────────────")
     center_text("                                                                  𝐸𝑥𝑝𝑙𝑜𝑟𝑒 𝑎𝑙𝑙 𝑜𝑓 𝑡ℎ𝑒 𝑙𝑜𝑐𝑎𝑡𝑖𝑜𝑛𝑠                ")
     center_text("                                                                    𝐹𝑖𝑛𝑖𝑠ℎ 𝑎𝑙𝑙 𝑜𝑓 𝑡ℎ𝑒 𝑞𝑢𝑒𝑠𝑡𝑠                 ")
     center_text("                                                                      𝐷𝑒𝑓𝑒𝑎𝑡 𝑎𝑙𝑙 𝑏𝑜𝑠𝑠𝑒𝑠                     ")
-    center_text("                                                   ༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺\n")
+    center_text("                                                   ༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺")
+    print()
     center_text("༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺                                                 ")
     center_text("                     𝑯𝑶𝑾 𝑻𝑶 𝑷𝑳𝑨𝒀                                                                      ")
     center_text("──────────────────────────────────────────────────────                                                  ")
     center_text("   𝐸𝑛𝑡𝑒𝑟 𝑡𝘩𝑒 𝑎𝑠𝑠𝑖𝑔𝑛𝑒𝑑 𝑘𝑒𝑦 𝑜𝑟 𝑡𝑦𝑝𝑒 𝑤𝘩𝑎𝑡 𝑎𝑐𝑡𝑖𝑜𝑛 𝑦𝑜𝑢 𝑤𝑎𝑛𝑡 𝑡𝑜 𝑑𝑜                                                   ")
     center_text("                 𝑃𝑟𝑒𝑠𝑠 '𝑆𝑃𝐴𝐶𝐸' 𝑡𝑜 𝑐𝑜𝑛𝑡𝑖𝑛𝑢𝑒                                                                ")
+    center_text("                𝑃𝑟𝑒𝑠𝑠 '𝑄' 𝑡𝑜 𝑠𝑘𝑖𝑝 𝑑𝑖𝑎𝑙𝑜𝑔𝑢𝑒𝑠                                                                ")
+    center_text("             𝑃𝑟𝑒𝑠𝑠 '𝐼' 𝑡𝑜 𝑎𝑐𝑐𝑒𝑠𝑠 𝑦𝑜𝑢𝑟 𝑖𝑛𝑣𝑒𝑛𝑡𝑜𝑟𝑦                                                                   ")
+    center_text("                  𝑃𝑟𝑒𝑠𝑠 '𝐻' 𝑡𝑜 𝑜𝑝𝑒𝑛 𝑡𝘩𝑖𝑠                                                              ")
     center_text("                𝑃𝑟𝑒𝑠𝑠 '𝑋' 𝑡𝑜 𝑞𝑢𝑖𝑡 𝑡𝘩𝑒 𝑔𝑎𝑚𝑒                                                                ")
-    center_text("༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺\n                                                  ")
-    press_space()
+    center_text("༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺༻━━━༺                                                  ")
+    print()
+    press_space(True)
     clear()
 
 
@@ -361,9 +388,9 @@ def game():
         print()
         center_text("\033[33m⊰══════════════════════════════════════════════════════════════════════════════════════════✦❘ ༻༺ ❘✦══════════════════════════════════════════════════════════════════════════════════════════⊱\033[0m")
         print("\033[F\033[F", end="")
-        type_text(line, 0.05, True)
+        type_text(line, 0.05, True, True)
         print("\n")
-        dialogue()
+        press_space(True)
         clear()
 
     current_location = "Lalaque Forest"
@@ -384,6 +411,9 @@ def game():
 
 #                 ⊰════════════════════════✦ 𝑰𝑵𝑷𝑼𝑻 𝑬𝑽𝑨𝑳𝑼𝑨𝑻𝑰𝑶𝑵 ✦════════════════════════⊱
         if command.upper().strip() == "I":
+            show_inventory(inventory)
+
+        if command.upper().strip() == "H":
             clear()
             information()
             continue
@@ -407,7 +437,7 @@ def game():
             center_text("\033[31m                                          ┃┏┓┓┏┏┓┃┓┏┫  ┃┏┓┏┓┓┏╋                                          \033[0m")
             center_text("\033[31m                                          ┻┛┗┗┛┗┻┗┗┗┻  ┻┛┗┣┛┗┻┗                                          \033[0m")
             center_text("\033[31m⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱\033[0m")
-            press_space()
+            press_space(True)
             continue
 
 #                       ⊰════════════════════════✦ 𝑬𝑿𝑷𝑳𝑶𝑹𝑰𝑵𝑮 ✦════════════════════════⊱
@@ -484,7 +514,7 @@ while True:
     elif choice.strip() == "2":
         information()
     elif choice.strip() == "3":
-        sys.exit()
+        quit_detector()
     else:
         clear()
         center_text("\033[31m⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱\033[0m")
@@ -492,4 +522,4 @@ while True:
         center_text("\033[31m                                          ┃┏┓┓┏┏┓┃┓┏┫  ┃┏┓┏┓┓┏╋                                          \033[0m")
         center_text("\033[31m                                          ┻┛┗┗┛┗┻┗┗┗┻  ┻┛┗┣┛┗┻┗                                          \033[0m")
         center_text("\033[31m⊰═══════════════════════════════════════════════✦❘ ༻༺ ❘✦═══════════════════════════════════════════════⊱\033[0m")
-        press_space()
+        press_space(True)
