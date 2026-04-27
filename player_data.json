@@ -1,11 +1,11 @@
 {
-  "name" : "",
-  "merit" : 0,
   "hp" : 100,
+  "max_hp" : 100,
   "attack" : 10,
   "defense" : 10,
   "agility" : 10,
 
-  "jacket" : "False",
-  "lamp" : "False"
+  "jacket" : false,
+  "lantern" : false,
+  "grapple" : false
 }
