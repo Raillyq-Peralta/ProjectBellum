@@ -1,17 +1,102 @@
 {
     "Big Red Ant" : {
-    "hp" : 75,
-    "attack" : 30,
-    "defense" : 5,
-    "agility" : 3,
-    "loot" : "Pincer"
-  },
+      "hp" : 75,
+      "max_hp" : 75,
+      "attack" : 30,
+      "defense" : 5,
+      "agility" : 3,
+      "loot" : "Pincer"
+    },
 
     "Wild Boar" : {
-        "hp" : 150,
-        "attack" : 20,
-        "defense" : 10,
-        "agility" : 15,
-        "loot" : "Tusk"
+      "hp" : 30,
+      "max_hp" : 30,
+      "attack" : 20,
+      "defense" : 10,
+      "agility" : 15,
+      "loot" : "Tusk"
+    },
+
+    "Slime" : {
+      "hp" : 20,
+      "max_hp" : 20,
+      "attack" : 5,
+      "defense" : 30,
+      "agility" : 5,
+      "loot" : "Slime Pudding"
+    },
+
+    "Blaze" : {
+      "hp" : 40,
+      "max_hp" : 40,
+      "attack" : 70,
+      "defense" : 5,
+      "agility" : 5,
+      "loot" : "Blaze Ring"
+    },
+
+    "Nuuk Bird" : {
+      "hp" : 10,
+      "max_hp" : 10,
+      "attack" : 5,
+      "defense" : 5,
+      "agility" : 50,
+      "loot" : "Nuuk Feather"
+    },
+
+    "Nuuk Raptor" : {
+      "hp" : 150,
+      "max_hp" : 150,
+      "attack" : 30,
+      "defense" : 30,
+      "agility" : 40,
+      "loot" : "Nuuk Beak"
+    },
+
+    "Turtle" : {
+      "hp" : 20,
+      "max_hp" : 20,
+      "attack" : 30,
+      "agility" : 1,
+      "defense" : 100,
+      "loot" : "Turtle Shell"
+    },
+
+    "Cryo Golem" : {
+      "hp" : 50,
+      "max_hp" : 50,
+      "attack" : 20,
+      "defense" : 300,
+      "agility" : 2,
+      "loot" : "Ice Orb"
+    },
+
+    "Dendro Golem" : {
+      "hp" : 300,
+      "max_hp" : 300,
+      "attack" : 10,
+      "defense" : 20,
+      "agility" : 10,
+      "loot" : "Seed Orb"
+    },
+
+    "Pyro Golem" : {
+      "hp" : 75,
+      "max_hp" : 75,
+      "attack" : 120,
+      "defense" : 20,
+      "agility" : 10,
+      "loot" : "Fire Orb"
+    },
+
+    "Umbra" : {
+      "hp" : 200,
+      "max_hp" : 200,
+      "attack" : 120,
+      "defense" : 30,
+      "agility" : 40,
+      "loot" : "Mysterious Orb"
     }
+
+
 }
