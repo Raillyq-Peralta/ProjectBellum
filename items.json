@@ -1,0 +1,153 @@
+{
+  "Vavelian Tender Leaf" : {
+    "type" : "healing",
+    "heal" : 25,
+    "description" : "A young leaf from tree species native to the Vavelian continent. Restores 25 HP."
+  },
+
+  "Vavelian Leaf" : {
+    "type" : "healing",
+    "heal" : 50,
+    "description" : "A leaf from tree species native to the Vavelian continent. Restores 50 HP."
+  },
+
+  "Elixir" : {
+    "type" : "healing",
+    "heal" : "full",
+    "description" : "A mixture of Vavelian herbs. Restores all HP."
+  },
+
+  "Health Shard" : {
+    "type" : "stat",
+    "stat" : "max_hp",
+    "value" : 15,
+    "description" : "A gem used in rituals, has a weird effect on the human body. Increases max health by 15."
+  },
+
+  "Health Shard II" : {
+    "type" : "stat",
+    "stat" : "max_hp",
+    "value" : 30,
+    "description" : "A stronger gem used in rituals, has a weird effect on the human body. Increases max health by 30."
+  },
+
+  "Strength Potion" : {
+    "type" : "stat",
+    "stat" : "attack",
+    "value" : 20,
+    "description" : "A mixture of Vavelian protein. Increases attack by 20."
+  },
+
+  "Nuuk Feather" : {
+    "type" : "stat",
+    "stat" : "agility",
+    "value" : 10,
+    "description" : "A feather from a Nuuk bird. Increases agility by 10."
+  },
+
+  "Nuuk Beak" : {
+    "type" : "stat",
+    "stat" : "agility",
+    "value" : 30,
+    "description" : "A beak from a Nuuk Raptor. Increases agility by 30."
+  },
+
+  "Nuuk Soup" : {
+    "type" : "stat",
+    "stat" : "agility",
+    "value" : 50,
+    "description" : "A mixture of different parts of a Nuuk bird. Increases agility by 50."
+  },
+
+  "Turtle Shell" : {
+    "type" : "stat",
+    "stat" : "defense",
+    "value" : 15,
+    "description" : "A shell from a turtle. Increases defense by 15."
+  },
+
+  "Red Turtle Shell" : {
+    "type" : "stat",
+    "stat" : "defense",
+    "value" : 30,
+    "description" : "A shell from a red turtle. Increases defense by 30."
+  },
+
+  "Lalaque Flower" : {
+    "type" : "quest",
+    "description" : "A fresh flower from the Vavelian continent. Used for adding aroma to dishes."
+  },
+
+  "Pincer" : {
+    "type" : "quest",
+    "description" : "A pincer from a Big Red Ant. Very sharp and highly poisonous."
+  },
+
+  "Vavelian Sap" : {
+    "type" : "quest",
+    "description" : "Sap found from tree species native to the Vavelian continent. Has medicinal purposes."
+  },
+
+  "Slime Pudding" : {
+    "type" : "quest",
+    "description" : "A weird substance a slime collapses to when it dies. Extremely lethal to certain species."
+  },
+
+  "Coal" : {
+    "type" : "quest",
+    "description" : "A fuel source found in the Vavelia Mine. Good for cooking."
+  },
+
+  "Tusk" : {
+    "type" : "quest",
+    "description" : "A tusk from a wild boar. Used for making weapons."
+  },
+
+  "Blaze Ring" : {
+    "type" : "quest",
+    "description" : "A scorching ring a blaze expels when dying. Used as a near permanent heat source."
+  },
+
+  "Vavelia Orb" : {
+    "type" : "quest",
+    "description" : "An orb blessed with the spirits of Vavelia. Emits a strong purifying aura."
+  },
+
+  "Ice Orb" : {
+    "type" : "quest",
+    "description" : "An extremely frigid substance made from a complicated geologic and thermodynamic process."
+  },
+
+  "Fire Orb" : {
+    "type" : "quest",
+    "description" : "An extremely scalding substance made from a complicated geologic and thermodynamic process."
+  },
+
+  "Seed Orb" : {
+    "type" : "quest",
+    "description" : "An extremely verdant substance made from a complicated botanical and phototrophic process."
+  },
+
+  "Mysterious Orb" : {
+    "type" : "quest",
+    "description" : "A mysterious orb. Feels familiar."
+  },
+
+  "Jacket" : {
+    "type" : "equipment",
+    "equip_key" : "jacket",
+    "description" : "A moldy jacket. Lets you explore cold areas."
+  },
+
+  "Lantern" : {
+    "type" : "equipment",
+    "equip_key" : "lantern",
+    "description" : "A handcrafted lantern that seems to be made of aromatic wood. Lets you explore dark areas."
+  },
+
+  "Grapple" : {
+    "type" : "equipment",
+    "equip_key" : "grapple",
+    "description" : "A grapple made out of cooled down magma. Lets you explore high areas."
+  }
+}
