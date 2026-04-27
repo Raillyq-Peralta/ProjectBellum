@@ -7,6 +7,7 @@
   },
 
   "Lalaque Bridge" : {
+    "Take" : "Strength Potion",
     "Forward" : "Lalaque Village",
     "Back" : "Lalaque Forest"
   },
@@ -22,37 +23,167 @@
   },
 
   "Deep Lalaque Forest" : {
-    "Interact" : "Shrine",
+    "Interact" : "???",
     "Back" : "Lalaque Forest"
   },
 
   "Lalaque Village" : {
     "Interact" : "Lalaque Villager",
-    "Left" : "Icy Plains",
+    "Left" : "Snow Field",
     "Back" : "Lalaque Bridge"
   },
 
-  "Icy Plains" : {
-    "Forward" : "Snow Field",
-    "Back" : "Boar Plains"
+  "Snow Field" : {
+    "Forward" : "Icy Plains",
+    "Left" : "Boar Plains",
+    "Back" : "Lalaque Village"
   },
 
-  "Snow Field" : {
+  "Icy Plains" : {
     "Forward" : "Ice Cave",
-    "Back" : "Icy Plains"
+    "Back" : "Snow Field"
   },
 
   "Ice Cave" : {
-    "Back" : "Snow Field"
+    "Fight" : "Cryo Golem",
+    "Back" : "Icy Plains"
   },
 
   "Boar Plains" : {
     "Fight" : "Wild Boar",
-    "Left" : "Vavelia Forest",
-    "Back" : "Icy Plains"
+    "Left" : "Outer Vavelia Forest",
+    "Back" : "Snow Field"
+  },
+
+  "Outer Vavelia Forest" : {
+    "Take" : "Vavelian Tender Leaf",
+    "Forward" : "Vavelia Forest",
+    "Left" : "Vavelia Village",
+    "Right" : "Vavelia Kingdom",
+    "Back" : "Boar Plains"
   },
 
   "Vavelia Forest" : {
-    "Back" : "Boar Plains"
+    "Take" : "Vavelian Leaf",
+    "Forward" : "Mysterious Swamp",
+    "Back" : "Outer Vavelia Forest"
+  },
+
+  "Vavelia Village" : {
+    "Interact" : "Vavelian Villager",
+    "Left" : "Vavelia Mine",
+    "Back" : "Outer Vavelia Forest"
+  },
+
+  "Vavelia Kingdom" : {
+    "Take" : "Health Shard",
+    "Forward" : "Inner Vavelia Kingdom",
+    "Back" : "Outer Vavelia Forest"
+  },
+
+  "Mysterious Swamp" : {
+    "Fight" : "Slime",
+    "Left" : "Vavelia Cave",
+    "Back" : "Vavelia Forest"
+  },
+
+  "Vavelia Mine" : {
+    "Take" : "Coal",
+    "Back" : "Vavelia Village"
+  },
+
+  "Inner Vavelia Kingdom" : {
+    "Forward" : "Vavelia Castle",
+    "Back" : "Vavelia Kingdom"
+  },
+
+  "Vavelia Cave" : {
+    "Forward" : "Verdant Rift",
+    "Right" : "Deep Vavelia Cave",
+    "Back" : "Mysterious Swamp"
+  },
+
+  "Vavelia Castle" : {
+    "Interact" : "Pope",
+    "Left" : "Armory",
+    "Back" : "Inner Vavelia Kingdom"
+  },
+
+  "Verdant Rift" : {
+    "Take" : "Vavelian Sap",
+    "Fight" : "Dendro Golem",
+    "Back" : "Vavelia Cave"
+  },
+
+  "Deep Vavelia Cave" : {
+    "Fight" : "Blaze",
+    "Forward" : "Pyro Kingdom",
+    "Right" : "Uncharted Vavelia Cave",
+    "Back" : "Vavelia Cave"
+  },
+
+  "Armory" : {
+    "Take" : "Red Turtle Shell",
+    "Back" : "Vavelia Castle"
+  },
+
+  "Pyro Kingdom" : {
+    "Interact" : "Ember",
+    "Take" : "Strength Potion",
+    "Fight" : "Pyro Golem",
+    "Back" : "Deep Vavelia Cave"
+  },
+
+  "Uncharted Vavelia Cave" : {
+    "Forward" : "Hole",
+    "Back" : "Deep Vavelia Cave"
+  },
+
+  "Hole" : {
+    "Forward" : "Nuuk Field",
+    "Back" : "Uncharted Vavelia Cave"
+  },
+
+  "Nuuk Field" : {
+    "Fight" : "Nuuk Bird",
+    "Forward" : "Nuuk Village",
+    "Right" : "Nuuk Hill",
+    "Back" : "Hole"
+  },
+
+  "Nuuk Village" : {
+    "Interact" : "Nuuk Villager",
+    "Take" : "Vavelian Leaf",
+    "Forward" : "Pruto Forest",
+    "Left" : "Nuuk Forest",
+    "Back" : "Nuuk Field"
+  },
+
+  "Nuuk Hill" : {
+    "Fight" : "Nuuk Raptor",
+    "Back" : "Nuuk Field"
+  },
+
+  "Pruto Forest" : {
+    "Take" : "Health Shard II",
+    "Forward" : "Deep Pruto Forest",
+    "Back" : "Nuuk Village"
+  },
+
+  "Nuuk Forest" : {
+    "Take" : "Elixir",
+    "Back" : "Nuuk Village"
+  },
+
+  "Deep Pruto Forest" : {
+    "Take" : "Health Shard II",
+    "Forward" : "Vavelia Coast",
+    "Back" : "Pruto Forest"
+  },
+
+  "Vavelia Coast" : {
+    "Fight" : "Turtle",
+    "Take" : "Red Turtle Shell",
+    "Back" : "Deep Pruto Forest"
   }
 }
