@@ -4,9 +4,6 @@ stress and cure boredom. You uncover a world full of mysteries as you interact w
 people, collect items, level up, and fight enemies.
 
 # How To Run
-Make sure all JSON files are downloaded.
-Run this game on terminal for a better experience.
-
-
-The Keyboard module is required for this program to run.
-You can install it by running python -m pip install keyboard.
+Make sure all JSON and MP3 files are downloaded.
+Run this game on Pycharm terminal in fullscreen for a better experience.
+Check information out before playing the game for more information.
