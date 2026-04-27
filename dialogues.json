@@ -1,11 +1,13 @@
 {
   "intro" : [
     "Welcome to Project Bellum...",
-    "You're a single middle aged man who works a regular 9-5 office job and its been a long day at work.",
-    "It's time to go home, you decide to take the bus home and you fall asleep because of how tired you are.",
-    "When you awaken, you look out the window to suddenly find yourself in a different world full of other worldly creatures and unique plants and trees never seen on Earth.",
-    "This shocks you yet you get off the bus because you have a gut-feeling that something in this land is calling upon you.",
-    "Once you get down, your journey in this new world begins!"
+    "You're an ordinary student living an ordinary life.",
+    "It's time to go home.",
+    "You take the bus home and you fall asleep because of how tired you are.",
+    "When you wake up, you suddenly find yourself in a forest.",
+    "A forest full of other worldly creatures and unique plants and trees never seen on Earth.",
+    "This shocks you yet you get up because you have a feeling that something in this land is calling upon you.",
+    "Once you get up, your journey in this new world begins!"
   ],
 
   "Lalaque Villager" : [
@@ -62,5 +64,274 @@
       ],
       "access" : false
     }
-    ]
+    ],
+
+  "Vavelian Villager" : [
+    {
+      "conditions" : null,
+      "lines" : [
+        "Vavelian Villager: Hey!",
+        "You: ?",
+        "Vavelian Villager: Can you help me?",
+        "You: What do you need?",
+        "Vavelian Villager: My daughter is very sick and she's having trouble breathing.",
+        "You: What do I do?",
+        "Vavelian Villager: Can you get some Vavelian Sap?",
+        "You: Where do I find that?",
+        "Vavelian Villager: I think there are some left in the deep Vavelian Forest",
+        "You: Okay.",
+        "Vavelian Villager: Thank you so much!",
+        "You: ..."
+      ],
+      "access" : true
+    },
+    {
+      "conditions" : ["Vavelian Sap"],
+      "lines" : [
+        "Vavelian Villager: Have you found any Vavelian Sap?",
+        "You: Yeah, it was pretty challenging to find it.",
+        "Vavelian Villager: Sorry for the inconvenience, thank you so much for helping my daughter!",
+        "You: Your welcome!",
+        "Vavelian Villager: Take this as a token of gratitude!",
+        "You: What's this?",
+        "Vavelian Villager: Its a special lantern I handcrafted years ago.",
+        "You: Oh, thanks!"
+      ],
+      "reward" : "Lantern",
+      "access" : false
+    },
+    {
+      "conditions": "Incomplete",
+      "lines": [
+        "Vavelian Villager: Have you found any Vavelian Sap?",
+        "You: Not yet.",
+        "Vavelian Villager: Okay..."
+      ],
+      "access": false
+    },
+    {
+      "conditions" : "Finished",
+      "lines" : [
+        "Vavelian Villager: Thank you so much for helping my daughter",
+        "You: No problem.",
+        "Vavelian Villager: She's fully recovered now.",
+        "You: ..."
+      ],
+      "access" : false
+    }
+  ],
+
+  "Pope" : [
+    {
+      "conditions" : null,
+      "lines" : [
+        "Pope: Hello there.",
+        "You: Hi.",
+        "Pope: Are you in condition where you are available to help?",
+        "You: Sure, I do need something in exchange though.",
+        "Pope: Farewell, so here's the thing.",
+        "Pope: There's an ongoing crisis near the boar plains.",
+        "Pope: The cold microclimate is somehow spreading to nearby areas.",
+        "Pope: If we don't solve this problem, our food source will be endangered.",
+        "Pope: So please, if you know how to help please say so.",
+        "You: Alright."
+      ],
+      "access" : true
+    },
+    {
+      "conditions" : ["Blaze Ring"],
+      "lines" : [
+        "Pope: So, have you figured out how to solve the cryo-crisis?",
+        "You: Yeah, you can use this blaze ring to heat up the nearby areas for a while.",
+        "Pope: That's smart! Thank you so much for helping!",
+        "Pope: Take this orb as a token of gratitude.",
+        "You: What's this?",
+        "Pope: It's an orb that has been blessed with the spirits of Vavelia continent.",
+        "You: Woah, that's so cool."
+      ],
+      "reward" : "Vavelia Orb",
+      "access" : false
+    },
+    {
+      "conditions" : "Incomplete",
+      "lines" : [
+        "Pope: So, have you figured out how to solve the cryo-crisis?",
+        "You: Not really.",
+        "Pope: Alright..."
+      ],
+      "access" : false
+    },
+    {
+      "conditions" : "Finished",
+      "lines" : [
+        "Pope: Thank you again for helping.",
+        "You: Your welcome!"
+      ],
+      "access" : false
+    }
+  ],
+
+  "Ember" : [
+    {
+      "conditions" : null,
+      "lines" : [
+        "Ember: You there!",
+        "You: ?",
+        "Ember: Can you help me?",
+        "You: Alright.",
+        "Ember: My friend wants to practice swordsmanship.",
+        "Ember: But he doesn't really have a sword.",
+        "Ember: Can you give me materials for a sharp and poisonous sword?",
+        "You: Sure, what materials do I need?",
+        "Ember: I honestly don't know, figure it out.",
+        "You: Okay, this better have a payment.",
+        "Ember: Yeah, yeah."
+      ],
+      "access" : true
+    },
+    {
+      "conditions" : ["Slime Pudding", "Tusk"],
+      "lines" : [
+        "Ember: Do you have the materials that can make a sharp and poisonous sword?",
+        "You: Yeah.",
+        "You: This tusk can be used as the blade of the sword.",
+        "You: And then you can apply the slime pudding and let it harden to make it poisonous.",
+        "Ember: THANKS! This is perfect!",
+        "You: Your welcome!",
+        "Ember: ...",
+        "You: ...",
+        "Ember: ...",
+        "You: Uhm.",
+        "Ember: ?",
+        "You: No reward? :(",
+        "Ember: No.",
+        "You: But I helped you?",
+        "Ember: Fine.",
+        "Ember: Take this.",
+        "You: Woah, is this a grapple made out of magma?",
+        "Ember: Yeah, I have no use for it anyway.",
+        "You: Cool."
+      ],
+      "reward" : "Grapple",
+      "access" : false
+    },
+    {
+      "conditions" : "Incomplete",
+      "lines" : [
+        "Ember: Do you have the materials that can make a sharp and poisonous sword?",
+        "You: Not really.",
+        "Ember: Find it faster."
+      ],
+      "access" : false
+    },
+    {
+      "conditions" : "Finished",
+      "lines" : [
+        "You: Hey.",
+        "Ember: ?",
+        "You: How did you make this?",
+        "Ember: I just found it in my closet when I was organizing it.",
+        "Ember: I have no idea where it came from.",
+        "Ember: Not that I care.",
+        "You: ..."
+      ],
+      "access" : false
+    }
+  ],
+
+  "Nuuk Villager" : [
+    {
+      "conditions" : null,
+      "lines" : [
+        "You: Are you alright?",
+        "Nuuk Villager: Huh?",
+        "You: You look very cold.",
+        "Nuuk Villager: Oh, its just that the microclimate kind of spread here too.",
+        "Nuuk Villager: It's okay, I hear the Pope will do something about it.",
+        "You: I don't think it's okay when you're shivering so much.",
+        "Nuuk Villager: Oh, then can you give me some coal?",
+        "You: Alright, I'll find some.",
+        "Nuuk Villager: Thank you so much. *ACHOO!!*"
+      ],
+      "access" : true
+    },
+    {
+      "conditions" : ["Coal"],
+      "lines" : [
+        "Nuuk Villager: Have you found some?",
+        "You: Yeah, here you go.",
+        "Nuuk Villager: Thank you! This feels so much better!",
+        "You: No problem!",
+        "Nuuk Villager: Take this.",
+        "You: What's this?",
+        "Nuuk Villager: It's a Nuuk soup, it helps with being more agile.",
+        "You: Oh thanks!",
+        "Nuuk Villager: Thanks too."
+      ],
+      "reward" : "Nuuk Soup",
+      "access" : false
+    },
+    {
+      "conditions" : "Incomplete",
+      "lines" : [
+        "Nuuk Villager: Have you found some?",
+        "You: Not yet.",
+        "Nuuk Villager: Alright"
+      ],
+      "access" : false
+    },
+    {
+      "conditions" : "Finished",
+      "lines" : [
+        "Nuuk Villager: This feels so much better!",
+        "You: ..."
+      ],
+      "access" : false
+    }
+  ],
+
+  "???" : [
+    {
+      "conditions" : null,
+      "lines" : [
+        "???: ...",
+        "You: Hey.",
+        "???: ...",
+        "You: Hello?",
+        "???: ...",
+        "You: ..."
+      ],
+      "access" : true
+    },
+    {
+      "conditions" : ["Fire Orb", "Ice Orb", "Seed Orb", "Vavelia Orb"],
+      "lines" : [
+        "???: !",
+        "You: !"
+      ],
+      "reward" : null,
+      "access" : false
+    },
+    {
+      "conditions" : "Incomplete",
+      "lines" : [
+        "???: ...",
+        "You: Hey.",
+        "???: ...",
+        "You: Hello?",
+        "???: ...",
+        "You: ..."
+      ],
+      "access" : false
+    },
+    {
+      "conditions" : "Finished",
+      "lines" : [
+        "???: ...",
+        "You: ..."
+      ],
+      "access" : false
+    }
+  ]
+
 }
